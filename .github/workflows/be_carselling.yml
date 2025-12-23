@@ -46,6 +46,7 @@ jobs:
         with:
           image-ref: "autohunt-selling-car-backend:${{ github.sha }}"
           format: table
+          exit-code: 1
 
       - name: Push to Dockerhub
         uses: docker/build-push-action@v4
@@ -53,6 +54,6 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: true
-          tags: "autohunt-selling-car-backend:${{ github.sha }}"
+          tags: "${{ secrets.DOCKER_ACCESS_USER }}/autohunt-selling-car-backend:${{ github.sha }}"
           cache-from: type=gha
           cache-to: type=gha, mode=max
