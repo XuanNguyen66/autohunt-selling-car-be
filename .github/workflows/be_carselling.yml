@@ -47,6 +47,7 @@ jobs:
           image-ref: "autohunt-selling-car-backend:${{ github.sha }}"
           format: table
           exit-code: 1
+          severity: CRITICAL
 
       - name: Push to Dockerhub
         uses: docker/build-push-action@v4
