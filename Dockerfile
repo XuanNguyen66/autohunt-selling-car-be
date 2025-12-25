@@ -10,12 +10,10 @@ FROM base AS development
 COPY . .
 CMD ["npm", "run", "dev"]
 
-RUN npm run build
 FROM base AS builder
 COPY . .
-RUN npm run build
 
-RUN npm prune --production
+RUN npm run build && npm prune --production
 
 FROM node:20-alpine AS production
 WORKDIR /app
