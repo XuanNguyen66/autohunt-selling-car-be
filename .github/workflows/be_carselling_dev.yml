@@ -41,12 +41,12 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      - name: Build Test (Important)
+      - name: Build Test
         run: npm run build
         env:
-          MONGO_URI_DEV: ${{ secrets.MONGO_URI_DEV }}
+          MONGO_URL: ${{ secrets.MONGO_URI_DEV }}
 
       - name: Build Docker Image
         run: docker compose -f docker-compose.dev.yml build
         env:
-          MONGO_URI_DEV: ${{ secrets.MONGO_URI_DEV }}
+          MONGO_URL: ${{ secrets.MONGO_URI_DEV }}
