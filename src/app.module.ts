@@ -1,16 +1,30 @@
 import { Module } from '@nestjs/common';
-<<<<<<< HEAD
+import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [],
-=======
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath:
+        process.env.NODE_ENV === 'production'
+          ? '.env'
+          : './env/development.env',
 
-@Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
->>>>>>> 06862b22a538c3fdd3f96f820998df9121345a9a
+      isGlobal: true,
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGO_URL');
+        if (!uri) {
+          throw new Error('MONGO_URL is not defined');
+        }
+        return { uri };
+      },
+    }),
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
