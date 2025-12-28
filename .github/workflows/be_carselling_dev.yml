@@ -46,6 +46,11 @@ jobs:
         env:
           MONGO_URL: ${{ secrets.MONGO_URL_DEV }}
 
+      - name: Create file for dev
+        run: |
+          mkdir -p ./env
+          echo "MONGO_URL=${{ secrets.MONGO_URL_DEV }}" > ./env/development.env
+
       - name: Build Docker Image
         run: docker compose -f docker-compose.dev.yml build
         env:

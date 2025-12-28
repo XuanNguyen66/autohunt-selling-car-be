@@ -16,8 +16,6 @@ services:
       target: development
     ports:
       - "8080:8080"
-    env_file:
-      - ./env/development.env
     volumes:
       - .:/app
       - /app/node_modules
@@ -31,7 +29,8 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - CHOKIDAR_INTERVAL=1000
       - WATCHPACK_POLLING=true
-      - MONGO_URL=${MONGO_URL_DEV}
+    env_file:
+      - ./env/development.env
     depends_on:
       - mongodb
 networks:
