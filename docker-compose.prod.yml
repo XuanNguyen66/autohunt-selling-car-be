@@ -6,6 +6,8 @@ services:
       target: production
     ports:
       - "8080:8080"
+    environment:
+    - MONGO_URL=${MONGO_URL_PROD}
     restart: always
     networks:
       - network_connect
