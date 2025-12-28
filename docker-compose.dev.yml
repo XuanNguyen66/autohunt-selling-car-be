@@ -31,7 +31,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - CHOKIDAR_INTERVAL=1000
       - WATCHPACK_POLLING=true
-      - MONGO_URL= ${ MONGO_URL_DEV }
+      - MONGO_URL=${MONGO_URL_DEV}
     depends_on:
       - mongodb
 networks:
