@@ -41,12 +41,23 @@ jobs:
         with:
           dockerfile: Dockerfile
 
+<<<<<<< HEAD
+      - name: Build Test (Important)
+        run: npm run build
+        env:
+          MONGO_URI_DEV: ${{ secrets.MONGO_URI_DEV }}
+=======
       - name: Build Test
         run: npm run build
         env:
           MONGO_URL: ${{ secrets.MONGO_URL_DEV }}
+>>>>>>> 27100bcf2ac2f46990586bf40043ba90286c08f7
 
       - name: Build Docker Image
         run: docker compose -f docker-compose.dev.yml build
         env:
+<<<<<<< HEAD
+          MONGO_URI_DEV: ${{ secrets.MONGO_URI_DEV }}
+=======
           MONGO_URL: ${{ secrets.MONGO_URL_DEV }}
+>>>>>>> 27100bcf2ac2f46990586bf40043ba90286c08f7
