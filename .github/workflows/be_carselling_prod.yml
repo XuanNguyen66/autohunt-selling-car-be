@@ -1,4 +1,4 @@
-name: Buid Backend
+name: Buid Backend Prod
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ on:
       - ".github/workflows/be_carselling.yml"
 jobs:
   build-deploy:
-    name: Build and Deploy Back-End
+    name: Build and Production Back-End
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
