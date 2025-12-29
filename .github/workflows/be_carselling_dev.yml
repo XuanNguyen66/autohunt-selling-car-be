@@ -9,7 +9,6 @@ on:
 
     paths:
       - "**"
-      - ".github/workflows/be_carselling_dev.yml"
 jobs:
   build-deploy:
     name: Build and Development Back-End

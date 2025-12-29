@@ -8,7 +8,7 @@ on:
       - master
 
     paths:
-      - ".github/workflows/be_carselling.yml"
+      - "**"
 jobs:
   build-deploy:
     name: Build and Production Back-End
@@ -37,7 +37,6 @@ jobs:
           context: .
           load: true
           dockerfile: Dockerfile
-          env: MONGO_URL=${{ secrets.MONGO_URL_PROD }}
           tags: "autohunt-selling-car-backend:${{ github.sha }}"
 
       - name: Vulnerability Scan

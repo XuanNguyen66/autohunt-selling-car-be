@@ -1,4 +1,14 @@
 services:
+  mongodb:
+    image: 'mongo'
+    container_name: container_mongo
+    restart: "always"
+    env_file:
+      - ./env/env_mongo.env
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - network_data
   backend:
     container_name: container_backend
     build: 
@@ -13,6 +23,9 @@ services:
       - network_connect
 networks:
   network_connect:
-    external: true
+    external: bridge
+  network_data:
+    driver: bridge
 volumes:
+  mongo_data:
   backend_logs:
